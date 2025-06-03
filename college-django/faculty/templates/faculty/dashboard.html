@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}Faculty Dashboard{% endblock %}
+
+{% block content %}
+  <h1>Welcome, {{ faculty.name }}!</h1>
+  <p>Department: {{ faculty.department }}</p>
+  <p>You are currently teaching {{ courses_count }} course{{ courses_count|pluralize }}.</p>
+
+  <h2>Your Courses</h2>
+  <ul>
+    {% for course in faculty.courses.all %}
+      <li>{{ course.title }} ({{ course.credits }} credits)</li>
+    {% empty %}
+      <li>You are not assigned to any courses yet.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}
